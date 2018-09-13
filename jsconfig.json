@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "assets/*": ["./src/assets/*"],
+            "components/*": ["./src/components/*"],
+            "config/*": ["./src/config/*"],
+            "models/*": ["./src/models/*"],
+            "routes/*": ["./src/routes/*"],
+            "utilities/*": ["./src/utilities/*"],
+        }
+    }
+}

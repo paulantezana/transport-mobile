@@ -1,0 +1,120 @@
+@import "../../config/app";
+
+$action-hover: #E6F7FF;
+$layout-header-height: 64px !default;
+
+.header {
+    height: $layout-header-height;
+    padding: 0 12px 0 0;
+    background: #fff;
+    // border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    position: relative;
+}
+
+:global {
+    .ant-layout {
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+}
+
+.logo {
+    height: $layout-header-height;
+    line-height: $layout-header-height - 6px;
+    vertical-align: top;
+    display: inline-block;
+    padding: 0 0 0 18px;
+    cursor: pointer;
+    font-size: 20px;
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.menu {
+    :global(.anticon) {
+        margin-right: 8px;
+    }
+    :global(.ant-dropdown-menu-item) {
+        width: 160px;
+    }
+}
+
+i.trigger {
+    font-size: 20px;
+    line-height: $layout-header-height;
+    cursor: pointer;
+    transition: all 0.3s, padding 0s;
+    padding: 0 15px;
+    &:hover {
+        background: $action-hover;
+    }
+}
+
+.right {
+    float: right;
+    height: 100%;
+    .action {
+        cursor: pointer;
+        padding: 0 12px;
+        display: inline-block;
+        transition: all 0.3s;
+        height: 100%;
+        > i {
+            font-size: 16px;
+            vertical-align: middle;
+            // color: @text-color;
+        }
+        &:hover,
+        &:global(.ant-popover-open) {
+            background: $action-hover;
+        }
+    }
+    .search {
+        padding: 0;
+        margin: 0 12px;
+        &:hover {
+            background: transparent;
+        }
+    }
+    .account {
+        .avatar {
+            margin: 0 8px 0 0;
+            color: var(--color);
+            background: rgba(255, 255, 255, 0.85);
+            vertical-align: middle;
+        }
+    }
+}
+
+// @include to (md) {
+//     .header {
+//         :global(.ant-divider-vertical) {
+//             vertical-align: unset;
+//         }
+//         .name {
+//             display: none;
+//         }
+//         i.trigger {
+//             padding: 0 12px;
+//         }
+//         .logo {
+//             padding-right: 12px;
+//             position: relative;
+//         }
+//         .right {
+//             position: absolute;
+//             right: 12px;
+//             top: 0;
+//             background: #fff;
+//             .account {
+//                 .avatar {
+//                     margin-right: 0;
+//                 }
+//             }
+//         }
+//     }
+// }
+  

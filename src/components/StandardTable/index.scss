@@ -1,0 +1,24 @@
+// @import "../../helpers/config";
+
+.standardTable {
+    overflow-x: auto;
+    .tableAlert {
+        margin-bottom: 16px;
+    }
+}
+
+// :global{
+//     #components-table-demo-resizable-column .react-resizable {
+//         position: relative;
+//     }
+      
+//     #components-table-demo-resizable-column .react-resizable-handle {
+//         position: absolute;
+//         width: 10px;
+//         height: 100%;
+//         bottom: 0;
+//         right: -5px;
+//         cursor: col-resize;
+//     }
+// }
+

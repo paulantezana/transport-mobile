@@ -1,0 +1,9 @@
+@import 'config/app';
+:global{
+    html, body, #root{
+        height: 100vh;
+    }
+    iframe{
+        border: none;
+    }
+}

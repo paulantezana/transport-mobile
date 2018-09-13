@@ -1,0 +1,37 @@
+$logo-width: 5rem;
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    .logocontainer{
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: $logo-width;
+            height: $logo-width;
+            border-radius: 100%;
+            box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.4);
+            animation: pulse 1s infinite linear;
+            @keyframes pulse {
+                0% {
+                  box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.4);
+                }
+                70% {
+                    box-shadow: 0 0 0 30px rgba(0, 132, 255, 0);
+                }
+                100% {
+                    box-shadow: 0 0 0 0 rgba(0, 132, 255, 0);
+                }
+            }
+        }
+    }
+    .logo{
+        width: $logo-width;
+    }
+}

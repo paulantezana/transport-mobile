@@ -1,0 +1,22 @@
+{
+    "presets": ["env","react"],
+    "plugins": [
+        ["transform-class-properties"],
+        ["module-resolver", {
+            "alias": {
+                "assets": "./src/assets",
+                "components": "./src/components",
+                "config": "./src/config",
+                "models": "./src/models",
+                "routes": "./src/routes",
+                "utilities": "./src/utilities"
+            }
+        }],
+        ["import", 
+            { 
+                "libraryName": "antd",
+                "style": true
+            }
+        ]  
+    ]
+}
