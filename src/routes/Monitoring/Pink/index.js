@@ -19,9 +19,10 @@ setInterval(()=>{
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
             }
+            console.log(msg,"SEND");
             ws.send(JSON.stringify(msg))
         });
-    }else{
+    }else {
         console.log("error");
     }
 },1000);

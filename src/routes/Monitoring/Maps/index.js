@@ -1,7 +1,8 @@
-import React from "react"
-import { compose, withProps } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from "react";
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
+import { service }  from 'config/app';
 // AIzaSyBWWkaV0hX1t5w7OpFWdJr0b_R2uJcC7SI
 
 const MyMapComponent = compose (
@@ -12,14 +13,18 @@ const MyMapComponent = compose (
         containerElement: <div style={{ height: `75vh` }} />,
         mapElement: <div style={{ height: `100%` }} />,
     }),
-        withScriptjs,
-        withGoogleMap
-    )((props) =>
-    <GoogleMap
-        defaultZoom={17}
-        defaultCenter={{ lat: -14.256834, lng: -71.221120 }}>
-            { props.isMarkerShown && <Marker position={{ lat: -14.256834, lng: -71.221120 }} onClick={props.onMarkerClick} /> }
-    </GoogleMap>
+    withScriptjs,
+    withGoogleMap
+    )((props) => {
+        console.log(props);
+        return (
+            <GoogleMap
+                defaultZoom={17}
+                defaultCenter={{ lat: props.locations[0].latitude, lng: props.locations[0].longitude }}>
+                    { props.isMarkerShown && <Marker position={{ lat: props.locations[0].latitude, lng: props.locations[0].longitude }} onClick={props.onMarkerClick} /> }
+            </GoogleMap>
+        )
+    }
 )
 
 class Maps extends React.PureComponent {
@@ -27,30 +32,58 @@ class Maps extends React.PureComponent {
         super(props);
         this.state = {
             isMarkerShown: false,
+            locations: [
+                {
+                    latitude: 0,
+                    longitude: 0,
+                }
+            ],
         }
+        this.handleMarkerClick = this.handleMarkerClick.bind(this);
+        this.delayedShowMarker = this.delayedShowMarker.bind(this);
+        this.handleMapData = this.handleMapData.bind(this);
     }
 
     componentDidMount() {
         this.delayedShowMarker()
+        this.handleMapData();
     }
 
-    delayedShowMarker = () => {
+    delayedShowMarker(){
         setTimeout(() => {
             this.setState({ isMarkerShown: true })
         }, 3000)
     }
 
-    handleMarkerClick = () => {
+    handleMarkerClick(){
         this.setState({ isMarkerShown: false })
         this.delayedShowMarker()
     }
 
+    handleMapData(){
+        const ws = new WebSocket(service.socket_location);
+        ws.onopen = ()=>{
+            console.log("conectado");
+        }
+        ws.onerror = ()=>{
+            console.log("error");
+        }
+        ws.onmessage = e =>{
+            const data = JSON.parse(e.data);
+            this.setState({
+                locations: data.locations
+            });
+        }
+    }
+
     render() {
         return (
-            <MyMapComponent
-                isMarkerShown={this.state.isMarkerShown}
-                onMarkerClick={this.handleMarkerClick}
-            />
+            <div>
+                <MyMapComponent
+                    isMarkerShown={this.state.isMarkerShown}
+                    onMarkerClick={this.handleMarkerClick}
+                    locations={this.state.locations}/>
+            </div>
         )
     }
 }
