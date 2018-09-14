@@ -34,9 +34,9 @@ class Maps extends React.PureComponent {
             isMarkerShown: false,
             locations: [
                 {
-                    latitude: 0,
-                    longitude: 0,
-                }
+                    latitude: -14.268477,
+                    longitude: -71.225880,
+                },
             ],
         }
         this.handleMarkerClick = this.handleMarkerClick.bind(this);
