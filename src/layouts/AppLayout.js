@@ -17,6 +17,12 @@ import Monitoring from 'routes/Monitoring';
 const TabPane = Tabs.TabPane;
 
 class AppLayout extends Component{
+
+    componentDidMount(){
+        const { dispatch } = this.props;
+        dispatch({type: 'global/globalSetting'})
+    }
+
     render(){
         return (
             <Tabs defaultActiveKey="1">

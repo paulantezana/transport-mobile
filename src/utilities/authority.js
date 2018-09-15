@@ -16,16 +16,17 @@ export const setAuthority = (token) => {
     localStorage.setItem(ATUH_KEY,token);
 }
 
-// Get user token
-export const getAuthorityUser = ()=> {
+// Get mobile token
+export const getAuthorityMobile = ()=> {
     return decoder(getAuthority());
 }
 
 // Get profile
 export const Authorized = () => {
-    return getAuthorityUser().user.profile;
+    return getAuthorityMobile().mobile.profile;
 }
 
+// Private route
 export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}

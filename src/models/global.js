@@ -1,6 +1,6 @@
-import { settingGlobal, settingUpdate, settingUploadLogo } from '../services/setting';
+import { settingGlobalMobile, settingUpdate, settingUploadLogo } from '../services/setting';
 import { mobileById } from '../services/mobile';
-import { getAuthorityUser } from 'utilities/authority';
+import { getAuthorityMobile } from 'utilities/authority';
 import { message } from 'antd';
 
 export default {
@@ -8,13 +8,13 @@ export default {
     state: {
       collapsed: false,
       setting: {},
-      user: {},
+      mobile: {},
       success: false,
     },
     effects: {
         *globalSetting({ payload }, { call, put }){
-            const tokenUser = getAuthorityUser();
-            const response = yield call(settingGlobal,{ id: tokenUser.user.id });
+            const tokenMobile = getAuthorityMobile();
+            const response = yield call(settingGlobalMobile,{ id: tokenMobile.user.id });
             if (response.success){
                 yield put({ type: 'settingSuccess', payload: response });
             }
@@ -37,7 +37,7 @@ export default {
             return {
                 ...state,
                 setting: payload.setting,
-                user: payload.user,
+                mobile: payload.mobile,
                 success: payload.success
             }
         },

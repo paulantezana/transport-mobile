@@ -18,4 +18,5 @@ class Monitoring extends React.Component{
         )
     }
 }
+
 export default Monitoring;

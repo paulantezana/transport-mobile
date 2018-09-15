@@ -10,8 +10,8 @@ export async function settingOnly() {
 }
 
 // Get Global settings
-export async function settingGlobal(body) { 
-    return request(`${SETTING_API}/global`,{
+export async function settingGlobalMobile(body) { 
+    return request(`${SETTING_API}/global/mobile`,{
         method: 'POST',
         body,
     })
