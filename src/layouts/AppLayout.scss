@@ -1,0 +1,10 @@
+@import "../config/app";
+.header{
+    text-align: center;
+    background: $primary-color;
+    padding: 0.2rem;
+    h1{
+        color: white;
+        margin: 0;
+    }
+}

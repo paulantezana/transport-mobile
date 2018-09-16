@@ -4,14 +4,18 @@ import { Row, Col } from 'antd';
 import Pink from './Pink';
 import Clock from './Clock';
 
+import styles from './index.scss';
+
 class Monitoring extends React.Component{
     render(){
         return (
-            <div>
-                <Row>
-                    <Col span={8}><Clock/></Col>
-                    <Col span={8}><Pink/></Col>
-                    <Col span={8}>20 Minutos</Col>
+            <div className={styles.container}>
+                <Row className={styles.header}>
+                    <Col span={5}><Pink/></Col>
+                    <Col span={16}>
+                        <Clock/>
+                        <div className={styles.pikerTime}>20 M</div>
+                    </Col>
                 </Row>
                 <Maps/>
             </div>
