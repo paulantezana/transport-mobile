@@ -7,6 +7,7 @@ class Pink extends React.Component{
     constructor(props){
         super(props);
         this.handleSendPosition = this.handleSendPosition.bind(this);
+        this.handleSendPiker = this.handleSendPiker.bind(this);
     }
 
     componentDidMount(){
@@ -36,11 +37,27 @@ class Pink extends React.Component{
             }
         }, 1000);
     }
+
+    handleSendPiker(){
+        let msg = {
+            name: this.props.global.mobile.name,
+        }
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(position=>{
+                msg.latitude =  position.coords.latitude;
+                msg.longitude = position.coords.longitude;
+                console.log(msg);
+            });
+        }else {
+            console.log("error");
+        }
+        console.log(msg);
+    }
     
     render(){
         return (
             <Fragment>
-                <div className={styles.buttom}/>
+                <div className={styles.buttom} onClick={this.handleSendPiker}/>
             </Fragment>
         )
     }
