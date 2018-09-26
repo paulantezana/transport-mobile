@@ -14,7 +14,7 @@ export default {
     effects: {
         *globalSetting({ payload }, { call, put }){
             const tokenMobile = getAuthorityMobile();
-            const response = yield call(settingGlobalMobile,{ id: tokenMobile.user.id });
+            const response = yield call(settingGlobalMobile,{ id: tokenMobile.mobile.id });
             if (response.success){
                 yield put({ type: 'settingSuccess', payload: response });
             }

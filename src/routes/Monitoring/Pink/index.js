@@ -30,6 +30,7 @@ class Pink extends React.Component{
                         longitude: position.coords.longitude,
                         name: this.props.global.mobile.name,
                     }
+                    console.log(msg);
                     ws.send(JSON.stringify(msg))
                 });
             }else {
@@ -46,7 +47,7 @@ class Pink extends React.Component{
             navigator.geolocation.getCurrentPosition(position=>{
                 msg.latitude =  position.coords.latitude;
                 msg.longitude = position.coords.longitude;
-                console.log(msg);
+                console.log(msg,"Localizacion Piker");
             });
         }else {
             console.log("error");
